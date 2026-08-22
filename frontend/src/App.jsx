@@ -32,13 +32,13 @@ export default function App() {
     toastTimer.current = setTimeout(() => setToast(t => ({ ...t, show: false })), 2600)
   }
 
-  function addToCart(name, price, emoji) {
+  function addToCart(item) {
     setCart(prev => {
-      const existing = prev.find(i => i.name === name)
-      if (existing) return prev.map(i => i.name === name ? { ...i, qty: i.qty + 1 } : i)
-      return [...prev, { name, price, emoji, qty: 1 }]
+      const existing = prev.find(i => i.name === item.name)
+      if (existing) return prev.map(i => i.name === item.name ? { ...i, qty: i.qty + 1 } : i)
+      return [...prev, { name: item.name, price: item.price, category: item.category, qty: 1 }]
     })
-    showToast(`${name} added!`)
+    showToast(`${item.name} added to your order`)
   }
 
   function changeQty(name, delta) {
@@ -60,7 +60,7 @@ export default function App() {
     }
     setCart([])
     setCartOpen(false)
-    showToast('Order placed! 🎉 See you soon!')
+    showToast('Order placed. Fresh dishes coming up.')
   }
 
   function toggleCart() {

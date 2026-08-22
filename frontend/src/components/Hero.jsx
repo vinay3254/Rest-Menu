@@ -1,3 +1,5 @@
+import { brand } from '../content/restaurantData'
+
 export default function Hero() {
   return (
     <section id="hero">
@@ -11,12 +13,17 @@ export default function Hero() {
       <div className="hero-image-overlay"></div>
       <div className="hero-content">
         <div className="hero-glass-card">
-          <p className="hero-eyebrow">Est. 2009 · Bengaluru, India</p>
-          <h1 className="hero-title">Bella <em>Vista</em></h1>
-          <p className="hero-tagline">Where every dish tells a story of passion, tradition & artistry</p>
+          <p className="hero-eyebrow">{brand.heroEyebrow}</p>
+          <h1 className="hero-title">{brand.logoMain} <em>{brand.logoAccent}</em></h1>
+          <p className="hero-tagline">{brand.heroTagline}</p>
+          <div className="hero-highlights">
+            {brand.heroHighlights.map(highlight => (
+              <span key={highlight}>{highlight}</span>
+            ))}
+          </div>
           <div className="hero-buttons">
-            <a href="#menu" className="btn-primary">View Our Menu</a>
-            <a href="#booking" className="btn-outline">Book a Table</a>
+            <a href="#menu" className="btn-primary">Explore Menu</a>
+            <a href="#booking" className="btn-outline">Reserve a Table</a>
           </div>
         </div>
       </div>

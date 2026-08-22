@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
+import { bookingFeatures } from '../content/restaurantData'
 
-const timeSlots = ['6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM']
+const timeSlots = ['12:30 PM', '1:00 PM', '1:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM']
 const today = new Date().toISOString().split('T')[0]
 
 export default function Booking() {
@@ -49,20 +50,15 @@ export default function Booking() {
       <div className="container">
         <div className="booking-inner">
           <div className="booking-text reveal">
-            <span className="section-tag" style={{ color: 'var(--gold-light)' }}>Reserve Your Evening</span>
-            <h2 className="section-title">Book a Table</h2>
+            <span className="section-tag" style={{ color: 'var(--gold-light)' }}>Reserve Your Table</span>
+            <h2 className="section-title">Plan Your Meal</h2>
             <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              Experience the finest Italian cuisine in an ambiance that elevates every moment.
+              Reserve a table for biryani feasts, office lunches, or late family dinners at Meghana Foods.
             </p>
             <div className="booking-features">
-              {[
-                { icon: '🕯️', text: 'Intimate candlelit dining rooms available' },
-                { icon: '🍾', text: 'Curated wine pairings by our sommelier' },
-                { icon: '🎂', text: 'Special occasions & private events welcome' },
-                { icon: '⭐', text: 'Michelin-starred experience since 2014' },
-              ].map(({ icon, text }) => (
+              {bookingFeatures.map(({ id, text }) => (
                 <div className="booking-feature" key={text}>
-                  <div className="booking-feature-icon">{icon}</div>
+                  <div className="booking-feature-icon">{id}</div>
                   <span>{text}</span>
                 </div>
               ))}
@@ -74,7 +70,7 @@ export default function Booking() {
               <form id="bookingForm" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="form-label">Your Name</label>
-                  <input type="text" className="form-input" placeholder="Giovanni Rossi" ref={nameRef} required />
+                  <input type="text" className="form-input" placeholder="Ashwin Kumar" ref={nameRef} required />
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                   <div className="form-group">
@@ -109,10 +105,10 @@ export default function Booking() {
                 </div>
                 <div className="form-group">
                   <label className="form-label">Special Requests (optional)</label>
-                  <input type="text" className="form-input" placeholder="Dietary needs, celebrations..." ref={specialRef} />
+                  <input type="text" className="form-input" placeholder="High chair, extra spice, family seating..." ref={specialRef} />
                 </div>
                 <button type="submit" className="btn-book" disabled={loading}>
-                  {loading ? 'Reserving…' : 'Confirm Reservation →'}
+                  {loading ? 'Reserving…' : 'Confirm Reservation'}
                 </button>
               </form>
             ) : (
@@ -120,8 +116,8 @@ export default function Booking() {
                 <div className="success-icon">✓</div>
                 <h3 className="success-title">Table Reserved!</h3>
                 <p className="success-text">
-                  We look forward to welcoming you.<br />
-                  A confirmation will be sent to your email shortly.
+                  Your table is held and the kitchen will be ready for you.<br />
+                  We look forward to serving you fresh and hot.
                 </p>
                 <button
                   onClick={resetBooking}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { brand } from '../content/restaurantData'
 
 export default function Navbar({ mobileOpen, onToggleMobile }) {
   const [hidden, setHidden] = useState(false)
@@ -20,14 +21,14 @@ export default function Navbar({ mobileOpen, onToggleMobile }) {
 
   return (
     <nav id="navbar" className={navClass}>
-      <a href="#hero" className="nav-logo">Bella <span>Vista</span></a>
+      <a href="#hero" className="nav-logo">{brand.logoMain} <span>{brand.logoAccent}</span></a>
       <ul className="nav-links">
         <li><a href="#menu">Menu</a></li>
         <li><a href="#booking">Reservations</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#footer">Contact</a></li>
       </ul>
-      <a href="#booking" className="nav-cta nav-links">Book a Table</a>
+      <a href="#booking" className="nav-cta nav-links">Reserve a Table</a>
       <div
         className={`hamburger${mobileOpen ? ' open' : ''}`}
         id="hamburger"

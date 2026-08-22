@@ -23,13 +23,12 @@ export default function Cart({ cart, isOpen, onToggle, onChangeQty, onPlaceOrder
         <div className="cart-items" id="cartItems">
           {cart.length === 0 ? (
             <div className="cart-empty" id="cartEmpty">
-              <div className="cart-empty-icon">🛒</div>
-              <p>Your cart is empty.<br />Add something delicious!</p>
+              <p>Your cart is empty.<br />Add biryanis, curries, or grills to get started.</p>
             </div>
           ) : (
             cart.map(item => (
               <div className="cart-item" key={item.name}>
-                <div className="cart-item-emoji">{item.emoji}</div>
+                <div className={`cart-item-pill ${item.category}`}>{item.category === 'veg' ? 'Veg' : 'Non-Veg'}</div>
                 <div className="cart-item-info">
                   <div className="cart-item-name">{item.name}</div>
                   <div className="cart-item-price">{formatPrice(item.price * item.qty)}</div>
@@ -58,7 +57,7 @@ export default function Cart({ cart, isOpen, onToggle, onChangeQty, onPlaceOrder
 
       {/* FAB */}
       <div className="cart-fab" id="cartFab" onClick={onToggle}>
-        🛒
+        Cart
         <div className={`cart-badge${totalQty > 0 ? ' show' : ''}`} id="cartBadge">
           {totalQty}
         </div>

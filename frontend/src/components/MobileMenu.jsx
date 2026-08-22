@@ -5,7 +5,7 @@ export default function MobileMenu({ isOpen, onClose }) {
       <a href="#booking" onClick={onClose}>Reservations</a>
       <a href="#about" onClick={onClose}>About</a>
       <a href="#footer" onClick={onClose}>Contact</a>
-      <a href="#booking" className="nav-cta" onClick={onClose}>Book a Table</a>
+      <a href="#booking" className="nav-cta" onClick={onClose}>Reserve a Table</a>
     </div>
   )
 }

@@ -1,14 +1,4 @@
-const stats = [
-  { number: '200+', label: 'Signature Dishes' },
-  { number: '15', label: 'Years of Excellence' },
-  { number: '50k+', label: 'Happy Guests' },
-]
-
-const images = [
-  { cls: 'img-placeholder-1', emoji: '🍽️', label: 'Fine Dining', style: { minHeight: '320px' } },
-  { cls: 'img-placeholder-2', emoji: '🫕', label: 'Kitchen', style: { minHeight: '152px' } },
-  { cls: 'img-placeholder-3', emoji: '🌿', label: 'Ingredients', style: { minHeight: '152px' } },
-]
+import { aboutImages, aboutStats } from '../content/restaurantData'
 
 export default function About() {
   return (
@@ -17,30 +7,30 @@ export default function About() {
         <div className="about-inner">
           <div className="about-text reveal">
             <span className="section-tag">Our Story</span>
-            <h2 className="section-title">Passion on Every Plate</h2>
+            <h2 className="section-title">Spice, Smoke, and Big Portions</h2>
             <p className="about-story">
-              Founded in 2009 by Chef Marco Conti, Bella Vista was born from a single belief: that extraordinary food is an act of love.
-              Nestled in the heart of the city, our kitchen draws on generations of Italian culinary wisdom.
+              Meghana Foods started in Bengaluru in 2009 with a simple promise: serve biryani, curries, and grills that arrive hot, aromatic, and generous enough for the whole table.
+              Our kitchen leans into Andhra spice, smoky tandoor heat, and the kind of comfort food that keeps regulars coming back after work and on weekends.
             </p>
             <p className="about-story" style={{ marginTop: 0 }}>
-              Every ingredient is sourced with intention — from the rolling hills of Tuscany to the sparkling waters of the Amalfi Coast.
-              We don't just cook meals; we craft memories.
+              From lunch rush trays to late-night family dinners, every order is finished close to service for the freshest flavour.
+              We also support separate veg and non-veg service when guests request it.
             </p>
             <div className="chef-card">
-              <div className="chef-avatar">👨‍🍳</div>
+              <div className="chef-avatar">MR</div>
               <div className="chef-info">
-                <h4>Marco Conti</h4>
-                <p>Head Chef & Founder <span>⭐ Michelin</span></p>
-                <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>"Cooking is the art of giving."</p>
+                <h4>Meghana Reddy</h4>
+                <p>Founder & Menu Curator <span>House Speciality</span></p>
+                <p style={{ fontSize: '12px', color: 'var(--text-muted)', marginTop: '4px' }}>"Every biryani should reach the table full of aroma, heat, and comfort."</p>
               </div>
             </div>
           </div>
 
           <div className="about-images reveal reveal-delay-2">
-            {images.map(({ cls, emoji, label, style }) => (
+            {aboutImages.map(({ img, label, style }) => (
               <div className="about-img-card" key={label}>
-                <div className={`img-placeholder ${cls}`} style={style}>
-                  <span>{emoji}</span>
+                <div className="about-photo-wrap" style={style}>
+                  <img src={img} alt={label} loading="lazy" />
                   <span className="img-label">{label}</span>
                 </div>
               </div>
@@ -49,7 +39,7 @@ export default function About() {
         </div>
 
         <div className="stats-row reveal">
-          {stats.map(({ number, label }) => (
+          {aboutStats.map(({ number, label }) => (
             <div className="stat-item" key={label}>
               <div className="stat-number">{number}</div>
               <div className="stat-label">{label}</div>
